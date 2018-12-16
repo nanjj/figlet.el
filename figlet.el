@@ -22,8 +22,8 @@
 
 
 ;; (defconst figlet-font-dir "/usr/share/figlet")
-(defconst figlet-font-file-regexp "\\.flf$")
-(defconst figlet-match-font-name-regexp "^\\([^.]*\\)\\.flf$")
+(defconst figlet-font-file-regexp "\\.[tf]lf$")
+(defconst figlet-match-font-name-regexp "^\\([^.]*\\)\\.[tf]lf$")
 
 (defun figlet-font-name-for-file (filename)
   (string-match figlet-match-font-name-regexp filename)
