@@ -93,3 +93,5 @@
 (defun banner (s)
   (interactive "sBanner Text: ")
   (figlet s "banner"))
+
+(provide 'figlet)
