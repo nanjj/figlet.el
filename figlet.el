@@ -22,6 +22,8 @@
 
 
 ;; (defconst figlet-font-dir "/usr/share/figlet")
+(require 'fortune)
+
 (defconst figlet-font-file-regexp "\\.[tf]lf$")
 (defconst figlet-match-font-name-regexp "^\\([^.]*\\)\\.[tf]lf$")
 
@@ -93,5 +95,15 @@
 (defun banner (s)
   (interactive "sBanner Text: ")
   (figlet s "banner"))
+
+(defun fortune-override-advice (&optional file)
+  "Fortune insert in current buffer"
+  (interactive)
+  (if current-prefix-arg
+      (setq file (read-string "Fortune File: ")))
+  (shell-command (concat "fortune " file) (current-buffer)))
+
+(advice-add 'fortune
+            :override #'fortune-override-advice)
 
 (provide 'figlet)
